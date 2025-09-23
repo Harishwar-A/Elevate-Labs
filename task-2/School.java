@@ -92,19 +92,25 @@ public class School {
     }
     public static ArrayList<StudentDetails> update(ArrayList<StudentDetails>list)
     {
-        String statement = " If you want to update student detail enter the rollno: ";
-        int index = findindex(list, statement);
-        if(index == -1)
-            System.out.print("Student not found");
-        else
+        String statement = " If you want to update student detail ";
+        int index = sizecheck(list);
+        if(index != -1){
             list.set(index,create(statement));
+            return list;
+        }
+        else
+            System.out.print("No student found");
         return list;
     }
     public static ArrayList<StudentDetails> delete(ArrayList<StudentDetails>list)
     {
-        String statement = "which need to be deleted: ";
-        int index = findindex(list,statement);
-        list.remove(index);
+        int index = sizecheck(list);
+        if(index != -1){
+            list.remove(index);
+            return list;
+        }
+        else
+            System.out.print("No student found");
         return list;
     }
     public static int findindex(ArrayList<StudentDetails>list, String statement)
@@ -120,6 +126,16 @@ public class School {
             index++;
         }
         return -1;
+    }
+    public static int sizecheck(ArrayList<StudentDetails> list)
+    {
+        if(list.size()==0)
+            return -1;
+        String statement = "which need to be deleted: ";
+        int index = findindex(list, statement);
+        if(index == -1)
+            return -1;
+        return index;
     }
 }
 class StudentDetails 
