@@ -74,7 +74,7 @@ public class CalculatorApp
     {
         if(value == (long)value)
             return String.valueOf((long)value);
-        return String.valueOf((long)value);
+        return String.valueOf(value);
     }
 }
 class Calculator
