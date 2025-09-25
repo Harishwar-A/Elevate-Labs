@@ -9,16 +9,16 @@ public class LibrarySystem
 
         System.out.print("If you are admin enter 1 or else enter 2 to continue: ");
         int choice = sc.nextInt();
-        sc.nextLine();
+        sc.nextLine(); 
         if (choice == 1) 
             library.adminLogin(sc);
         else
             library.userLogin(sc);
-
     }
 }
 
-class Library {
+class Library 
+{
     private ArrayList<Books> bookList = new ArrayList<>();
     private ArrayList<User> userList = new ArrayList<>();
 
@@ -45,8 +45,10 @@ class Library {
                     else
                         gate = false;
                 }
-                System.out.print("Do you want explore the books in the library (1 = Yes, 2 = No)");
+
+                System.out.print("Do you want explore the books in the library (1 = Yes, 2 = No) ");
                 int key = sc.nextInt();
+                sc.nextLine();
                 gate = true;
                 while(gate)
                 {
@@ -70,9 +72,8 @@ class Library {
     {
         try 
         {
-
             System.out.println("Enter Book ID:");
-            int id = Integer.parseInt(sc.nextLine());
+            int id = Integer.parseInt(sc.nextLine()); 
 
             System.out.println("Enter Book Title:");
             String title = sc.nextLine();
@@ -110,8 +111,10 @@ class Library {
             if (existingUser.checkPassword(password)) 
             {
                 System.out.println("Login successful! Welcome " + existingUser.name);
-                System.out.print("Do you want explore the books in the library (1 = Yes, 2 = No)");
+
+                System.out.print("Do you want explore the books in the library (1 = Yes, 2 = No) ");
                 int key = sc.nextInt();
+                sc.nextLine();
                 Boolean gate = true;
                 while(gate)
                 {
@@ -123,13 +126,14 @@ class Library {
                     else if( key > 2 || key <  1)
                         System.out.println("invalid input");
                 }
-                System.out.print("Do you want borrow the books in the library (1 = Yes, 2 = No)");
-                if(sc.nextInt() == 1)
+
+                System.out.print("Do you want borrow the books in the library (1 = Yes, 2 = No) ");
+                int borrowKey = sc.nextInt();
+                sc.nextLine(); 
+                if(borrowKey == 1)
                 {
-                    
                     try 
                     {
-
                         System.out.println("Enter Book ID:");
                         int id = Integer.parseInt(sc.nextLine());
 
@@ -180,6 +184,7 @@ class Library {
 
         System.out.println("Do you want to know the list of books in the library? (1 = Yes, 2 = No)");
         int gate = sc.nextInt();
+        sc.nextLine(); 
         if (gate == 1) 
             displayBooks();
     }
@@ -193,7 +198,8 @@ class Library {
     }
 }
 
-class User {
+class User 
+{
     String userid;
     String name;
     String password;
@@ -213,21 +219,23 @@ class User {
     }
 }
 
-class Books {
+class Books 
+{
     int id;
     String title;
     String author;
     Boolean isIssued;
 
-    public Books(int id, String title, String author, Boolean isIssued) {
+    public Books(int id, String title, String author, Boolean isIssued) 
+    {
         this.id = id;
         this.title = title;
         this.author = author;
         this.isIssued = isIssued;
     }
 
-    // @Override
-    // public String toString() {
-    //     return "Book ID: " + id + ", Title: " + title + ", Author: " + author + ", Issued: " + isIssued;
-    // }
+    @Override
+    public String toString() {
+        return "Book ID: " + id + ", Title: " + title + ", Author: " + author + ", Issued: " + isIssued;
+    }
 }
