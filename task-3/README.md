@@ -82,10 +82,6 @@ If you are admin enter 1 or else enter 2 to continue:
 
 ---
 
-## 🛠️ How to Run
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/library-system-java.git
 📌 Example Run
 If you are admin enter 1 or else enter 2 to continue: 1
 Enter the Admin ID:
